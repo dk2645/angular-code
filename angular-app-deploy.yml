@@ -1,4 +1,4 @@
-- hosts: 3.110.222.46
+- hosts: webservers
   become: yes
   tasks:
     - name: installing nginx
