@@ -22,7 +22,7 @@ pipeline{
             steps {
             echo "deploying the application using ansible-playbook"
 	sh '''
-	ansible-playbook angular-app-deploy.yml --key-file /var/lib/jenkins/serverkey.pem
+	ansible-playbook angular-app-deploy.yml --key-file /var/lib/jenkins/ab.pem
 	'''
 
             }
