@@ -8,9 +8,8 @@ phases:
       nodejs: 18
     commands:
       - echo Installing AWS CLI...
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      - sudo ./aws/install --bin-dir /usr/local/bin
+      - pip install awscli --upgrade --user
+      - export PATH=$PATH:$HOME/.local/bin
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
