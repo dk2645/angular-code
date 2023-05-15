@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "angular-site-first"
+    S3_BUCKET: ""
 phases:
   install:
     runtime-versions:
@@ -17,8 +17,8 @@ phases:
       - ng build --configuration production --aot
   post_build:
      commands:
-     - aws s3 cp --recursive --acl public-read ./dist s3://webbucket360/
-      - aws s3 cp --acl public-read --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/index.html s3://webbucket360/
+     - aws s3 cp --recursive --acl public-read ./dist/angular-hello-world s3://webbucket360/
+      - aws s3 cp --acl public-read --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/angular-hello-world s3://webbucket360/
       - aws cloudfront create-invalidation --distribution-id E34Q8PCDFGM3X4 --paths /index.html
 
 artifacts:
