@@ -16,10 +16,11 @@ phases:
       - echo Build started on `date`
       - ng build --configuration production --aot
   post_build:
-     commands:
-     - aws s3 cp --recursive --acl public-read ./dist/angular-hello-world s3://webbucket360/
-      - aws s3 cp --acl public-read --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/angular-hello-world s3://webbucket360/
-      - aws cloudfront create-invalidation --distribution-id E34Q8PCDFGM3X4 --paths /index.html
+    commands:
+    - aws s3 cp --recursive --acl public-read ./dist/angular-hello-world/ s3://webbucket360/
+    - aws s3 cp --acl public-read --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/angular-hello-world/index.html s3://webbucket360/
+    - aws cloudfront create-invalidation --distribution-id E34Q8PCDFGM3X4 --paths /index.html
+
 
 artifacts:
   files:
