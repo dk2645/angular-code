@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "webbucket360"
+    S3_BUCKET: "deploy789"
 phases:
   install:
     runtime-versions:
@@ -22,7 +22,7 @@ phases:
   post_build:
     commands:
       - aws s3 cp dist s3://${S3_BUCKET} --recursive
-      - aws s3 cp --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/angular-hello-world/index.html s3://webbucket360/
+      - aws s3 cp --cache-control "max-age=0, no-cache, no-store, must-revalidate" ./dist/angular-hello-world/index.html s3://deploy789/
       - aws cloudfront create-invalidation --distribution-id E34Q8PCDFGM3X4 --paths /index.html
 
 artifacts:
